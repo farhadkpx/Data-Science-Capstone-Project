@@ -1,21 +1,19 @@
-Course repository for Coursera Data Science Specialization Capstone Project. Implemented a learning model for text prediction.
+**A summary overview of the coursera 'Data science Capstone Project'**
 
-TestProgram.R
+There are four main '.R' files that contributes to the project.
 
-Code for dataset download and unzipping
-ReadLine code for each file
-Answer Code for Capstone Quiz 1 questions
-Answers for Capstone quix on NLP (quiz 2 and 3)
-ngramsCreate.R
+1. ui.R
+2. Server.R
+3. model_algotihm.R
+4. RdsFileCreation.R
 
-Code for creating n-grams (1, 2, 3, 4, 5, 6 grams)
-ui.R, server.R, .html, .css, /images
 
-Code for UI and Server with images and CSS
-.md, .Rpres, .html, .css
+
+> Code for creating n-grams (1, 2, 3, 4, 5, 6 grams)
 
 Code for creating final presentation
-Links
+
+**Links**
 
 Shiny app for next word perdiction is running at: (shiny)
 Detail alogorithm resources is available at: (github)
