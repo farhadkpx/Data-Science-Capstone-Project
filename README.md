@@ -17,6 +17,6 @@ Code for UI and Server with images and CSS
 Code for creating final presentation
 Links
 
-Shiny app for next word perdiction is running at 
-Presentation explaining approach and alogorithm is available at Project
-Next word prediction model resources
+Shiny app for next word perdiction is running at: (shiny)
+Detail alogorithm resources is available at: (github)
+
