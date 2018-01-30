@@ -1,7 +1,7 @@
-
+ 
 ## **Summary overview of the Coursera 'Data science Capstone Project'**
 
-### Instructions
+### Project Instructions:
 
 The goal of this project is to display that a student have gotten used to working with the real-life data and on track to create prediction algorithm, which will provide an interface that can be accessed and used by others. Basic course instructions are:
   - Demonstrate that you(student) have downloaded the data and have successfully loaded it in.
@@ -21,7 +21,15 @@ Provide a user-interface and 5-slides that will display a summary overview of th
 * `2. Server.R` : Server file listens user input and provide feedback.
 * `3. model_algotihm.R` : Next word prediction model.
 * `4. RdsFileCreation.R` : A copy of the milestone file.
+
 ## Data cleaning and 'Sample Corpus' creation
+One of the critical aspect of this project is data cleaning. I have used 'tm' package for this purpose. The cleaning process
+does
+- converting all text to lowercase from both Corpus and input text.
+- removing all numbers from Corpus and input text.
+- removing all punctuations.
+- removing bad words from Sample Corpus.
+- stripping unnecessary white spaces.
 
 ## N-Gram design
 Tokenizing the 'Sample Corpus' with TermDocumentMatrix function. <
@@ -48,11 +56,11 @@ In my pursuit to ascertain the connected and possible next word choice, I used N
 * Every computational process we will display five most frequently possible word choices.
 
 ### Limitation and Scope
-* The total combination file size is extremely big
-* The reduced file size may not be truly representative of the three files
-* The tm-package cleaning processes avoids unusual signs or marks
-
-
+* The total combination file size is extremely big, needs lot of computational power.
+* The reduced file(10%) size may not be truly representative of the three files in combination.
+* Scientific terms, unusual combination of input will not generate any prediction.
+* Prediction algorithm will not generate 5 output-choices for all input-text.
+* The tm-package cleaning processes avoids unusual signs or marks.
 
 ## **`Links for shiny-app and github sources`**
 
