@@ -1,3 +1,4 @@
+
 ## **Summary overview of the Coursera 'Data science Capstone Project'**
 
 ### Instructions
@@ -20,6 +21,7 @@ Provide a user-interface and 5-slides that will display a summary overview of th
 * `2. Server.R` : Server file listens user input and provide feedback.
 * `3. model_algotihm.R` : Next word prediction model.
 * `4. RdsFileCreation.R` : A copy of the milestone file.
+## Data cleaning and 'Sample Corpus' creation
 
 ## N-Gram design
 Tokenizing the 'Sample Corpus' with TermDocumentMatrix function. <
@@ -34,8 +36,8 @@ Tokenizing the 'Sample Corpus' with TermDocumentMatrix function. <
 In search of finding the right next-word-prediction model, I think Markov chain model in collaboration with Markov 
 random field is the perfect choice. Markov chain model property suggests that the distribution of a variable depends only on the distribution of previous state with random variables those changes through time.
 
-We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
-In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties
+`We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
+In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties`
 
 Receiving input through the input text box. 
 * After initial processing for basic text cleaning with model algorithms,
