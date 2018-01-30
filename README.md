@@ -22,11 +22,26 @@ Provide a user-interface and 5-slides that will display a summary overview of th
 * `4. RdsFileCreation.R` : A copy of the milestone file.
 
 ## N-Gram design
-
+Tokenizing the 'Sample Corpus' with TermDocumentMatrix function. <
+* Convert the tokens in to a matrix.
+* Reordering token-terms (higher > lower) of the matrix by frequency.
+* Transforming the matrix into data frame with column names as strings and frequency.
+* Save them as final_Unigram, final_bigram, final_trigram,
+* final_fourgram and final_fivegram as N-garam data frame with 'Rda' file format.
+* These Rda data frames will be called by the algorithm for next word prediction.
 
 ## Building the language model
+In search of finding the right next-word-prediction model, I think Markov chain model in collaboration with Markov 
+random field is the perfect choice. Markov chain model property suggests that the distribution of a variable depends only on the distribution of previous state with random variables those changes through time.
 
+We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
+In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties
 
+Receiving input through the input text box. 
+* After initial processing for basic text cleaning with model algorithms,
+* We will go by sequential implementation of bigram, trigram models, 
+* If no matching found, we move to fourgram or fivegram model and display probable word choices.
+* Every computational process we will display five most frequently possible word choices.
 
 ### Limitation and Scope
 * The total combination file size is extremely big
