@@ -1,9 +1,8 @@
 
 
-## **Summary overview of the Coursera 'Data science Capstone Project'**
+## **Summary overview of the Capstone Project**
 
 ### Project Instructions:
-
 The goal of this project is to display that a student have gotten used to working with the real-life data and on track to create prediction algorithm, which will provide an interface that can be accessed and used by others. Basic course instructions are:
   - Demonstrate that you(student) have downloaded the data and have successfully loaded it in.
   - Created a basic report of summary statistics about the data sets.
@@ -17,7 +16,6 @@ Provide a user-interface and 5-slides that will display a summary overview of th
 * A slide deck consisting of no more than 5 slides created with R Studio Presenter.
 
 ### There are four main '.R' files that contributes to the project.
-
 * `1. ui.R` : Primary app user interface file.
 * `2. Server.R` : Server file listens user input and provide feedback.
 * `3. model_algotihm.R` : Next word prediction model.
@@ -38,7 +36,7 @@ After having a clean dataset(Sample Corpus), I've gone through these steps to cr
 * `2. Converting the tokens in to a matrix.`
 * `3. Reordering token-terms (higher > lower) of the matrix by frequency.`
 * `4. Transforming the matrix into data frame with column names as strings and frequency.`
-* `5. Save them as Unigram_test, bigram_test, trigram_test,
+* `5. Save them as unigram_test, bigram_test, trigram_test`
 * `6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.`
 
 These Rda data frames will be called by the algorithm for next word prediction.
@@ -51,7 +49,6 @@ random field is the perfect choice. Markov chain model property suggests that th
 In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties`
 
 **Sequential steps for finding the next-right predicted words**
-
 * Receiving input through the input text box. 
 * After initial processing for basic text cleaning with model algorithms,
 * We will go by sequential implementation of bigram, trigram models, 
