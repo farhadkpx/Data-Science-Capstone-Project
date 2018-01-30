@@ -1,4 +1,5 @@
- 
+
+
 ## **Summary overview of the Coursera 'Data science Capstone Project'**
 
 ### Project Instructions:
@@ -32,13 +33,15 @@ does
 - stripping unnecessary white spaces.
 
 ## N-Gram design
-Tokenizing the 'Sample Corpus' with TermDocumentMatrix function. <
-* Convert the tokens in to a matrix.
-* Reordering token-terms (higher > lower) of the matrix by frequency.
-* Transforming the matrix into data frame with column names as strings and frequency.
-* Save them as final_Unigram, final_bigram, final_trigram,
-* final_fourgram and final_fivegram as N-garam data frame with 'Rda' file format.
-* These Rda data frames will be called by the algorithm for next word prediction.
+After having a clean dataset(Sample Corpus), I've gone through these steps to create N-grams
+* `1. Applying TermDocumentMatrix function on Sampled clean corpus to create text-terms.`
+* `2. Converting the tokens in to a matrix.`
+* `3. Reordering token-terms (higher > lower) of the matrix by frequency.`
+* `4. Transforming the matrix into data frame with column names as strings and frequency.`
+* `5. Save them as Unigram_test, bigram_test, trigram_test,
+* `6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.`
+
+These Rda data frames will be called by the algorithm for next word prediction.
 
 ## Building the language model
 In search of finding the right next-word-prediction model, I think Markov chain model in collaboration with Markov 
@@ -65,5 +68,6 @@ In my pursuit to ascertain the connected and possible next word choice, I used N
 ## **`Links for shiny-app and github sources`**
 
 Shiny app for next word perdiction is running at: (shiny)
+
 Detail alogorithm resources is available at: (github)
 
