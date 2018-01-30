@@ -1,0 +1,236 @@
+---
+title: "Milestone_Report: Peer_Graded_Assignment"
+author: "Ahmed_Md"
+date: "November 14th, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Review criteria for exploratory 'text-data' analysis:
+We are given three large text files as part of the 'Coursera Capstone Project'. We have to create a 'Milestone Report' on the analytical findings of these text files. I have decided to do exclusive text-file analysis, where each file will be reduced to smaller in size for processing time efficiency. A general guideline towards the analysis is as follows.
+
+**Processes:** Read File > Basic Summary Analysis > Corpus creation > Display most frequent words > N-Grams output > Graphical presentation.
+
+**Independent analysis:** Each file is distinct in the sense that the messages or writings are created to cater certain user group. So I think the prospective analysis should be separate to understand audience-user perspective. The goal of this report is to analyze major features of the 'text-data' and devise a plan for creating a prediction algorithm. The project review criteria directed as follows.
+
+**Review Criteria:** Provide a link of HTML page with exploratory 'text-data' analysis of three files > Offer basic Summary Analysis of those files > Display some 'word-frequency' or N-grams plots > Report analysis in a concise style for non-data scientists.
+
+
+## 1. Twitter File Analysis: Word frequency, NGrams and bar graph
+Twitter is small text-file designed with no more than 120-280 character on each text-file. Typically each 'twitt(text-file)' has very targetted audience, who are familiar about the context of 'twitt'. Twitts in general does not follow high level of grammitical correctness, it is more about contextual expression projected on a specific subject matter and directed to specific audience. We can call 'twitt' is a concise, personalized and targeted expression in present terms.
+
+```{r, echo=TRUE}
+# all needed library
+suppressMessages(library(doParallel))
+suppressPackageStartupMessages(library(wordcloud))
+suppressPackageStartupMessages(library(RColorBrewer))
+suppressPackageStartupMessages(library(RWeka))
+suppressPackageStartupMessages(library(ggplot2))
+
+suppressMessages(library(tm))
+suppressPackageStartupMessages(library(stringi))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(plotly))
+
+#setup parallel backend processors
+cluster <- makeCluster(detectCores() - 1)
+registerDoParallel(cluster)
+
+#--------------------------------------------------------------------------------------------
+# setting file path from my Desktop( All three files )
+setwd("C:/Users/paralax11/Desktop/Data_Science_Capstone_Project/Week_02/Peer_Graded_Assignment")
+
+# reading the 'twitter.txt' file directly from desktop
+twitter_text <- readLines("en_US.twitter.txt",encoding = 'utf-8', skipNul = TRUE, warn = FALSE)
+
+# calculating the twitter file size/ total line number and word counts
+twitter_size <- file.info("en_US.twitter.txt")$size / 1024^2
+twitter_lines <- length(twitter_text)
+twitter_words <- sum(stri_count_words(twitter_text))
+
+# displaying the calculated summary detail about the file
+twitter_Summary <- data.frame(twitter_size, twitter_lines, twitter_words)
+colnames(twitter_Summary) <- c("File size >", "Total Lines >", "Words Total")
+print(twitter_Summary)
+
+# reduced twitter file with 25 percent of the total line and display it 
+sampled_twitter <- sample(twitter_text, twitter_lines * 0.05)
+print(length(sampled_twitter))
+
+# each elements of the 'sampled-twitter' file is placed in a 'vector-source' function
+corpus1 <- Corpus(VectorSource(sampled_twitter))
+
+# creating a corpus1 with data trimming
+corpus1 <- corpus1 %>% tm_map(content_transformer(tolower)) %>% tm_map(removePunctuation) %>% tm_map(removeNumbers) %>% tm_map(removeWords, stopwords("english"))  %>% tm_map(stripWhitespace)%>% tm_map(PlainTextDocument)
+
+# corpus1 realignemnt
+corpus1 <- Corpus(VectorSource(corpus1))
+
+# processing the 'corpus1' as a term-document-matrix and display the word distribution
+Term.doc <- TermDocumentMatrix(corpus1)
+Term.doc <- as.matrix(Term.doc)
+Word.frequency <- sort(rowSums(Term.doc), decreasing = TRUE)
+head(Word.frequency, 10)
+
+#-------------UNI-GRAM-----------------------------------------
+# creating Unigram with 'twitter' file and display first 15 of them
+UniGramTokenizer <- NGramTokenizer(corpus1, Weka_control(min=1, max=1))
+UniGramMatrix <- TermDocumentMatrix(corpus1, control = list(tokenize = UniGramTokenizer))
+
+FrequenTerm <- findFreqTerms(UniGramMatrix, lowfreq = 1000)
+TermFrequency <- rowSums(as.matrix(UniGramMatrix[FrequenTerm,]))
+
+# sorting 'Unigrams' in a decreasing order on a dataframe
+TermFrequency <- data.frame(Wordfrequency = TermFrequency)
+head(TermFrequency, 10)
+
+# Converting matrix to a data frame for plotly presentation
+WordFrequency <- data.frame(words = names(Word.frequency), frequency = Word.frequency)
+
+# designing the barplot with plotly
+g <- ggplot(WordFrequency[1:10,], aes(x=reorder(words, frequency), y=frequency)) +geom_bar(stat="Identity", fill="darkolivegreen") + labs(y="Frequency",x="Words", title="Top 10 frequently used words on twitter") 
+ggplotly(g, width = 700, height = 350)
+```
+**Findings:** By analyzing the most frequent 'twitts(words)', it is obvious that frequenting words are all in 'present-tense-verb' forms can only be used for sharing general contextual expression. Also 'unigram' output reflects similar frequenting word pattern.
+
+
+## 2. Blog File: Word frequency, Bi-Grams and 'Word-Cloud' graph
+We know blogs are online pages, describes and analyzes perticular topics designed for specific group of audience, written mostly by one or more writers. Blogs may have categorical perspective on topics cater to specific readers.
+```{r, echo=TRUE}
+# reading the 'blogs_text' files/computing file size/counting lines and total number of words
+blogs_txt    <- readLines("en_US.blogs.txt", skipNul = TRUE, warn = FALSE)
+blogs_size   <- file.info("en_US.blogs.txt")$size / 1024^2
+blogs_lines  <- length(blogs_txt)
+blogs_words  <- sum(stri_count_words(blogs_txt))
+
+# displaying size of the blogs file/ total number of lines / total words
+blogs_Summary <- data.frame(blogs_size, blogs_lines, blogs_words)
+colnames(blogs_Summary) <- c("  File size >",  " Total Lines >", "  Words Total")
+print(blogs_Summary)
+
+# reducing the 'blogs.txt' file to 10 percent of the total size
+sampled_blogs <- sample(blogs_txt, blogs_lines * 0.10)
+
+# converting file character vector to 'utf-8' encoding
+sampled_blogs <- iconv(sampled_blogs, 'utf-8')
+
+# corpus creation and file trimming
+corpus2 <- Corpus(VectorSource(as.data.frame(sampled_blogs, stringsAsFactors = FALSE)))
+
+corpus2 <- corpus2 %>%
+  tm_map(tolower) %>%  tm_map(PlainTextDocument) %>% tm_map(removePunctuation) %>%
+  tm_map(removeNumbers) %>% tm_map(removeWords, stopwords("english")) %>% tm_map(stripWhitespace)
+
+# coering the trimmed corpus into a matrix-document 
+# as.matrix turns 'termDocumentMatrix' argument into a matrix. 
+term.doc <- TermDocumentMatrix(corpus2)
+term.doc <- as.matrix(term.doc)
+
+# sorting the corpus collection and display first 10 most frquency wise
+word_frequency <- sort(rowSums(term.doc), decreasing = TRUE)
+head(word_frequency, 10)
+
+# creating a data frame to display a 'word-cloud' with first 100 most frequent word
+blog.dfram <- data.frame(words=names(word_frequency), frequency=word_frequency)
+wordcloud(blog.dfram$words, blog.dfram$frequency, scale=c(4,0.5),  min.freq = 4, max.words = 75, random.order=TRUE, rot.per=.15, use.r.layout=FALSE, colors=brewer.pal(6, "Dark2"), ordered.colors = FALSE)
+
+#------------------------BI-Gram----------------------------------------------
+# Creating a 'BiGram' with a frequency visual to compare with most widely used words
+bigram <- NGramTokenizer(corpus2, Weka_control(min=2, max=2))
+bigram <- data.frame(table(bigram))
+bigram <- bigram[order(bigram$Freq, decreasing = TRUE),]
+head(bigram, 10)
+```
+**Findings:** We can see from most 'frequenting-words' output are in present tense 'verb-noun' format portrays discussion with informal conversational style. In addition, we see a pattern of contiguous interconnected words from 'bi-gram' output, where each words(token) are related to the preceding one in simple logical way. Each 'bi-gram' portrays condtional interdependency between tokens.
+
+
+## 3. News files: Word frequency, Trigram and Bar graph
+News files are essentially written for broad range of audience with indepth analysis infused into it. It is assumed news readers prefer detail connotation of any news topics or subject matter. 
+
+**News file summary:**
+
+*Here I've decided not to display all the similar codes for computing most frequent 'words' and 'word-trigrams'.*
+```{r, echo=FALSE}
+# read the news_text files/size/counting lines and total number of words
+news_txt  <- readLines("en_US.news.txt", skipNul = TRUE, warn = FALSE)
+news_size <- file.info("en_US.news.txt")$size / 1024^2
+news_lines <- length(news_txt)
+news_words <- sum(stri_count_words(news_txt))
+
+# dispalying the 'news.txt' file summary in a sum up
+news_Summary <- data.frame(news_size, news_lines, news_words)
+colnames(news_Summary) <- c("  File size >",  " Total Lines >", "  Words Total")
+print(news_Summary)
+```
+
+**Most fruequently used 10 words:**
+```{r, echo=FALSE}
+# news_file size reduced to 25 percent of the total file size with 'utf-8' encoding
+sampled_news <- sample(news_txt, news_lines * 0.25)
+sampled_news <- iconv(sampled_news, 'UTF-8')
+
+# news file sampled lines
+sampled_lines <- length(sampled_news)
+
+# creating 'corpus3' with sampled_news file
+corpus3 <- Corpus(VectorSource(as.data.frame(sampled_news, stringsAsFactors = FALSE)))
+
+# data(text) trimming with corpus
+corpus3 <- corpus3 %>% tm_map(tolower) %>%  
+  tm_map(PlainTextDocument) %>% tm_map(removePunctuation) %>%
+  tm_map(removeNumbers) %>% tm_map(removeWords, stopwords("english")) %>%
+  tm_map(stripWhitespace)
+
+# converting 'corpus3' to 'TermDocumentMatrix' to 'matrix' and head displaying
+Term_doc <- TermDocumentMatrix(corpus3)
+Term_doc <- as.matrix(Term_doc)
+Word_Frequency <- sort(rowSums(Term_doc), decreasing = TRUE)
+
+# most widely used word with 'news.txt' file
+head(Word_Frequency, 10)
+```
+
+**Tri-gram tokenized words with frequency:**
+```{r, echo=FALSE}
+# creating a data.frame with a 'tri-gram' tokenized words
+trigram <- NGramTokenizer(corpus3, Weka_control(min = 3, max = 3))
+trigram <- data.frame(table(trigram))
+trigram <- trigram[order(trigram$Freq, decreasing = TRUE),]
+head(trigram, 10)
+```
+
+**Barplot with Tri-gram:**
+```{r, fig.width=8, fig.height=3}
+# separating 10-trigram combination for 'bar' display
+trigram.Small <- head(trigram, 10)
+
+# plotting trigram with frequency on top bar
+newsTrigram <- ggplot(trigram.Small, aes(x=reorder(trigram, Freq), y=Freq)) +  geom_bar(stat="identity", fill="#FF6666") + geom_text(aes(label=Freq), hjust = -0.2)  + theme_bw() + coord_flip() + theme(axis.title.y = element_blank())+labs(y="Trigram Frequency", title="Top 10 trigram words from news file")
+
+print(newsTrigram)
+```
+
+**Stopping parallel processing**
+```{r, echo=FALSE}
+# NOte: https://stackoverflow.com/questions/18504559/twitter-data-analysis-error-in-term-document-matrix
+# finally folding the parallel-processing cluster 
+stopCluster(cluster)
+# forcing 'R' to return single threading process
+registerDoSEQ()
+```
+**Findings:** 
+On news-file I have decided to analyze 'tri-gram', which is contiguous word sequence for probabilistic language model predicts 'next-word-item'. This tri-gram(head) output from news file will help us to predict next possible continuation of user word choice, thereby help us to write the shiny app.
+
+## Next steps towards a prediction model: 
+
+1. Building a simple model based on the most frequent word selections and N-grams output.
+2. On that progression of model building, we might need to explore few more detail
+    a. Possible model-efficient data cleaning
+    b. Data sampling for reduced Runtime
+    c. Exploring prebuilt R algorithm like one based on 'Hidden Markov Chains' model
+   
+3. Creating a shiny App, where users would be allowed to input 'choice-text' in a text-box.
+4. In a contiguous text-box possible suggested matching text would be displayed to the user.
