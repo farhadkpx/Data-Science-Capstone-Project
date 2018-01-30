@@ -39,7 +39,9 @@ random field is the perfect choice. Markov chain model property suggests that th
 `We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
 In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties`
 
-Receiving input through the input text box. 
+**Sequential steps for finding the next-right predicted words**
+
+* Receiving input through the input text box. 
 * After initial processing for basic text cleaning with model algorithms,
 * We will go by sequential implementation of bigram, trigram models, 
 * If no matching found, we move to fourgram or fivegram model and display probable word choices.
