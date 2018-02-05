@@ -66,5 +66,5 @@ In my pursuit to ascertain the connected and possible next word choice, I used N
 
 Shiny app for next word perdiction is running at: (shiny)
 
-Detail alogorithm resources is available at: (github)
+Detail alogorithm resources is available at: https://github.com/farhadkpx/Data-Science-Capstone-Project
 
