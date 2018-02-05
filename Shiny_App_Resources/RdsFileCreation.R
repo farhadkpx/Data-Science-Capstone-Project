@@ -102,22 +102,26 @@ generateNgramData <- function(n) {
 
 # creating four N-Gram files
 unigram_frame <- generateNgramData(1)
-head(unigram_frame)
+
 bigram_frame <- generateNgramData(2)
-head(bigram_frame)
+
 trigram_frame <- generateNgramData(3)
-head(trigram_frame)
+
 fourgram_frame <- generateNgramData(4)
-head(fourgram_frame)
+
 fivegram_frame <- generateNgramData(5)
-head(fivegram_frame)
+
 
 # saving all the separated N-gram files to a folder 'Data'
 # creating N-grams test data set for algorithm validation
 saveRDS(unigram_frame, file = "Data/unigram_test.Rda")
+
 saveRDS(bigram_frame, file = "Data/bigram_test.Rda")
+
 saveRDS(trigram_frame, file = "Data/trigram_test.Rda")
+
 saveRDS(fourgram_frame, file = "Data/fourgram_test.Rda")
+
 saveRDS(fivegram_frame, file = "Data/fivegram_test.Rda")
 
 #------------------------------------------------
