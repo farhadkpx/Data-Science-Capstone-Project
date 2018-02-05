@@ -2,7 +2,7 @@ Data Science Capstone Presentation
 ========================================================
 author: Md Ahmed
 font-family:'Risque'
-date: 30th January, 2018
+date: 6th February, 2018
 transition: zoom
 transition-speed: slow
 navigation: section
@@ -21,10 +21,11 @@ font-family: 'Helvetica'
 - Data was sourced from publicly available HC Corpora(English text from news, tweets and blogs totaled about 2.4 million records).
 - **The prime objective of this 'app-project' is to allow any user to input a text or word into the application box, then app-algorithm will preidct the next most-likely user input choices.**
 - A practical usable context for this app could be  text messaging or searching on mobile devices.
-- Milestone Report here:[Click here]
+
+Online sources to find Source-Code and presentation
+- [Milestone Report Revised version - ( Click here)](https://github.com/farhadkpx/Data-Science-Capstone-Project/blob/master/Shiny_App_Resources/Revised_Milestone_Report.Rmd)
 - Shiny App here:
 - Github here:
-- [Basic text mining in R:](http://www.rdatamining.com/examples/text-mining)
 </font>
 
 
