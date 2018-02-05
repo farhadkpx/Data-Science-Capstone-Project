@@ -4,19 +4,19 @@ library(shinythemes)
 shinyUI(fluidPage( navbarPage(theme = shinytheme("united"), strong("Data Science Captone Project: Next - Word - Prediction")),
   sidebarPanel(tags$style(".well {background-color: #01A9DB;}"),
     h4( HTML("<font color=white><strong>Project Synopsis:</strong></font>")),
-    h4( HTML("<font color=black><b>This application predicts the next probable word choices stem from N-gram logical sequence.</b></font>")), 
+    h4( HTML("<font color=black><b>This application predicts the next probable word choices stems from N-gram logical sequence.</b></font>")), 
   
-    h4(HTML("<font color=white><b>To use this app, simply type-in word inside the text field on the right screen.")),
-    h4(HTML("<font color=black><b>Every time, if available, this app will display 5 next possible  word choices inside  buttons.</b></font>")),
-    h4(HTML("<font color=red><b>To explore the next prediction add words from buttons below by clicking on it.</b></font>")),
-    h4(HTML("<font color=white><b>You can also write-in choice words by typing into the input-box field.</b>")),
-    h4(HTML("<font color=black><b>Every single word-addition of input will predict new word choices inside the buttons.</b></font>"))
+    h4(HTML("<font color=white><b>To use this app, simply type-in words inside the text field on the right screen.")),
+    h4(HTML("<font color=red><b>Every time, if available, this app will display 5 next possible  word choices inside  buttons below.</b></font>")),
+    h4(HTML("<font color=black><b>To explore simpler next word prediction add words from buttons below by clicking on it.</b></font>")),
+    h4(HTML("<font color=white><b>Every single new word-addition of input will predict more word choices inside the buttons.</b></font>")),
+    h4(HTML("<font color=black><b>Each tab-panel offers detail app related resources.</b></font>"))
     ),
   mainPanel(
       wellPanel(tags$style(HTML("body {background-color: grey;}")),
       tabsetPanel(tabPanel("Application",(h3("Input your choice words:")),
-                           textInput("inputTxt", "Type in word(s) below:", width = "70%"),
-                           h4("The predicted next five choice words:"),
+                           textInput("inputText", "Type-in or Click-in word(s) from below:", width = "75%"),
+                           h4("The predicted next five to [one] choice words:"),
                             uiOutput("words"),
                            hr(),    #style = "background-color: black;"
                            br(),
@@ -31,12 +31,13 @@ shinyUI(fluidPage( navbarPage(theme = shinytheme("united"), strong("Data Science
                            
       tabPanel("Project Framework",
                 tags$div(HTML("<font color=black>
-                             <left><h4> Md Ahmed </h4>
+                             <left><h4>Author: Md Ahmed </h4>
+                              <h4>Date: 6th February 2018 </h4>
+                              <hr>
                               <h5> Github Link : <a href=https://github.com/ritheshkumar95/Capstone-Project> https://github.com/ritheshkumar95/Capstone-Project </a> </h5>
                               <h5> Slide Deck Link : <a href=http://rpubs.com/ritheshkumar95/73457> http://rpubs.com/ritheshkumar95/73457 </a></h5></center>
-                              <h5> Milestone Report link: </h5>
                               <h5> Data loading link: <a href = https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip> https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip</a></h5>
-                              
+                              <br>
                   <left><h4><b>Project Objective sequence</b> </h4><hr>
                               <h5>The main goal of this capstone project is to build a shiny application, which will be able to predict the next possible word choices.
                               This project exercise was divided into several sub tasks as such data cleansing, exploratory analysis, finding N-grams sequenes and creating a predictive model for next word choices.

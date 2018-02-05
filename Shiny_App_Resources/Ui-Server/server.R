@@ -9,23 +9,31 @@ source("model_algorithms.R", local = TRUE)
 
 # Designing shiny-server functions
 shinyServer(
-  function(input, output, session){
-    
-    
-    prediction <- reactive({
-      PredictNextWord(input$inputTxt)
-    })
-    
+  function(input, output, session)
+    {       # using 'reactive function' as input-word changes
+     Word.Prediction <- reactive({
+                            Predict.Next.Word(input$inputText)
+                  })
+     
+      # making reactive version of output(HTML) using ShinyUI library
     output$words <- renderUI({
-      predictWords <- prediction()
-      assign('WordsAssigned', predictWords, envir=.GlobalEnv)
-      k <- length(predictWords)       #-------
-      if( k > 0 && nchar(predictWords) > 0 && k !=0) {
+                           Words.predictd <- Word.Prediction()
+        
+         # assigning 'predicted-output-text' values to 'WordAssigned' with
+         # a 'global-environment' on user-space
+      assign('AssignedWords', Words.predictd, envir= globalenv()) 
+         
+      # counting predicted word and matching character conditions
+       k <- length(Words.predictd)       
+      if( k >= 0 && nchar(Words.predictd) > 0 )
+        
+        #-------------------------------------- 
+        {  # displaying words inside a button, on user-space
         buttons <- list()
-        for(i in 1:k) {
-          buttons <- list(buttons, list(
-            actionButton(inputId = paste("word",i, sep = ""), label =predictWords[i])))
-            #--------------------------------------------------
+        for(i in 1:k) 
+          { buttons <- list(buttons, list(
+            actionButton(inputId = paste("word",i, sep = ""), label = Words.predictd[i])))
+            #----------------------possible word cloud----------------------------
             # possible word cloud presentation
              # wordcloud_rep = repeatable(wordcloud)
              #  output$wordcloud = renderPlot(
@@ -36,32 +44,38 @@ shinyServer(
              #     max.words = 5
              #  ) ) 
            }
-        
+             # listing the buttons in a tag-list
         tagList( buttons )
-      } else {
-        tagList("") 
-      }
-    })
+      } else { tagList("") }     
+      })
+    #------------------------------------------------------------------------------------------------------
+    # selecting words from buttons instead of typing-in input-box
+    # when first output is selected from button output > input box
     
-    observeEvent(input$word1, {
-      updateTextInput(session, "inputTxt", value = paste(input$inputTxt, get('WordsAssigned', envir=.GlobalEnv)[1]))
-    })
+    observeEvent(input$word1, { updateTextInput(session, "inputText", value = paste(input$inputText,
+                                                     get('AssignedWords', envir=globalenv())[1]))
+                              })
     
-    observeEvent(input$word2, {
-      updateTextInput(session, "inputTxt", value = paste(input$inputTxt, get('WordsAssigned', envir=.GlobalEnv)[2]))
-    })
+    # when second output is selected into input box
+    observeEvent(input$word2, { updateTextInput(session, "inputText", value = paste(input$inputText,
+                                                    get('AssignedWords', envir=globalenv())[2]))
+                              })
+    #----------------------------
     
-    observeEvent(input$word3, {
-      updateTextInput(session, "inputTxt", value = paste(input$inputTxt, get('WordsAssigned', envir=.GlobalEnv)[3]))
-    })
-    
-    observeEvent(input$word4, {
-      updateTextInput(session, "inputTxt", value = paste(input$inputTxt, get('WordsAssigned', envir=.GlobalEnv)[4]))
-    })
-    
-    observeEvent(input$word5, {
-      updateTextInput(session, "inputTxt", value = paste(input$inputTxt, get('WordsAssigned', envir=.GlobalEnv)[5]))
-    })
+    # when third output is selected
+    observeEvent(input$word3, { updateTextInput(session, "inputText", value = paste(input$inputText, 
+                                                    get('AssignedWords', envir=globalenv())[3]))
+                              })
     
     
-  })
+    # when fourth output is selected
+    observeEvent(input$word4, { updateTextInput(session, "inputText", value = paste(input$inputText, 
+                                                    get('AssignedWords', envir=globalenv())[4]))
+                              })
+     #---------------------------
+    # when fifth output is selected
+    observeEvent(input$word5, { updateTextInput(session, "inputText", value = paste(input$inputText, 
+                                                    get('AssignedWords', envir=globalenv())[5]))
+                              })
+    
+  }) # End of shiny server function
