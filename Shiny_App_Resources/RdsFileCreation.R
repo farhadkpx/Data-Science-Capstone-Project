@@ -44,8 +44,10 @@ SampleCorpus <- tm_map(SampleCorpus, removeNumbers)
 SampleCorpus <- tm_map(SampleCorpus, removePunctuation)
 SampleCorpus <- tm_map(SampleCorpus, stripWhitespace)
 
-changetospace <- content_transformer(function(x, pattern) gsub(pattern, " ", x))
-SampleCorpus <- tm_map(SampleCorpus, changetospace, "/|@|\\|")
+# more pattern wise[unwarranted contents] cleaning
+ChangetoSpace <- content_transformer(function(x, pattern) gsub(pattern, " ", x))
+SampleCorpus <- tm_map(SampleCorpus, ChangetoSpace, "(f|ht)tp(s?)://(.*)[.][a-z]+")
+SampleCorpus <- tm_map(SampleCorpus, ChangetoSpace, "@[^\\s]+")
 
 # sample corpus analysis with most frequent words
 dtm <- DocumentTermMatrix(SampleCorpus, control = list(stopwords = TRUE))
@@ -70,9 +72,11 @@ ngramTokenizer <- function(l) {
 
 # generate unigram data set
 generateNgramData <- function(n) {
-  if(n == 1) {
+  if(n == 1) 
+  {
     Ngram_tdm <- TermDocumentMatrix(SampleCorpus)
-  } else {
+  } 
+  else {
     Ngram_tdm <- TermDocumentMatrix(SampleCorpus, control = list(tokenize = ngramTokenizer(n)))
   }
   
