@@ -31,24 +31,16 @@ requires an extensive work with these data sets. I feel due to the variety of in
 - removing some unrelevant signs, marks from the Corpus.
 
 ## N-Gram design
-After having a clean dataset(Sample Corpus), I've gone through these steps to create N-grams
-* `1. Applying TermDocumentMatrix function on Sampled clean corpus to create text-terms.`
-* `2. Converting the tokens in to a matrix.`
-- removing all numbers from Corpus and input text.
-- removing all punctuations.
-- removing bad words from Sample Corpus.
-- stripping unnecessary white spaces.
+Since, the whole next-word-prediction processes are based on N-gram sequential word selection, N-gram creation holds the major connection point for finding next possible word choices. After having a clean dataset with(Sample Corpus), I've gone through these steps to create 5 N-grams.
 
-## N-Gram design
-After having a clean dataset(Sample Corpus), I've gone through these steps to create N-grams
 * `1. Applying TermDocumentMatrix function on Sampled clean corpus to create text-terms.`
 * `2. Converting the tokens in to a matrix.`
 * `3. Reordering token-terms (higher > lower) of the matrix by frequency.`
 * `4. Transforming the matrix into data frame with column names as strings and frequency.`
-* `5. Save them as unigram_test, bigram_test, trigram_test`
+* `5. Save them as unigram_test, bigram_test, trigram_test,`
 * `6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.`
 
-These Rda data frames will be called by the algorithm for next word prediction.
+These '.Rda' data frames will be called in by the algorithm for next word prediction progression.
 
 ## Building the language model
 In search of finding the right next-word-prediction model, I think Markov chain model in collaboration with Markov 
@@ -56,15 +48,6 @@ random field is the perfect choice. Markov chain model property suggests that th
 
 `We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
 In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties`
-
-**Sequential steps for finding the next-right predicted words**
-* Receiving input through the input text box. 
-* `3. Reordering token-terms (higher > lower) of the matrix by frequency.`
-* `4. Transforming the matrix into data frame with column names as strings and frequency.`
-* `5. Save them as unigram_test, bigram_test, trigram_test`
-* `6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.`
-
-These Rda data frames will be called by the algorithm for next word prediction.
 
 ## Building the language model
 In search of finding the right next-word-prediction model, I think Markov chain model in collaboration with Markov 
