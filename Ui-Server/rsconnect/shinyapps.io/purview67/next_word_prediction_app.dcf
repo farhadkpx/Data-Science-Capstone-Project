@@ -1,0 +1,12 @@
+name: next_word_prediction_app
+title: Next_Word_Prediction_App
+username:
+account: purview67
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 273481
+bundleId: 1210623
+url: https://purview67.shinyapps.io/next_word_prediction_app/
+when: 1517945751.49675
+asMultiple: FALSE
+asStatic: FALSE
