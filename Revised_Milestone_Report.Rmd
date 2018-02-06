@@ -39,7 +39,7 @@ twitter_lines <- length(twitter_data)
 
 #===========================================================
 # Creating smaller samples for further processing and create a corpus
-sample_percent <- .06
+sample_percent <- .07
 blogs_sample <- blogs_data[sample(1:blogs_lines, blogs_lines * sample_percent)]
 news_sample <- news_data[sample(1:news_lines, news_lines * sample_percent)]
 twitter_sample <- twitter_data[sample(1:twitter_lines, twitter_lines * sample_percent)]

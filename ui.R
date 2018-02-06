@@ -15,7 +15,7 @@ shinyUI(fluidPage( navbarPage(theme = shinytheme("united"), strong("Data Science
   mainPanel(
       wellPanel(tags$style(HTML("body {background-color: grey;}")),
       tabsetPanel(tabPanel("Application",(h3("Input your choice words:")),
-                           textInput("inputText", "Type-in or Click-in word(s) from below:", width = "75%"),
+                           textInput("InputText", "Type-in or Click-in word(s) from below:", width = "75%"),
                            h4("The predicted next five to [one] choice words:"),
                             uiOutput("words"),
                            hr(),    #style = "background-color: black;"
@@ -34,8 +34,8 @@ shinyUI(fluidPage( navbarPage(theme = shinytheme("united"), strong("Data Science
                              <left><h4>Author: Md Ahmed </h4>
                               <h4>Date: 6th February 2018 </h4>
                               <hr>
-                              <h5> Github Link : <a href=https://github.com/ritheshkumar95/Capstone-Project> https://github.com/ritheshkumar95/Capstone-Project </a> </h5>
-                              <h5> Slide Deck Link : <a href=http://rpubs.com/ritheshkumar95/73457> http://rpubs.com/ritheshkumar95/73457 </a></h5></center>
+                              <h5> Github Link : <a href= https://github.com/farhadkpx/Data-Science-Capstone-Project> https://github.com/farhadkpx/Data-Science-Capstone-Project</a> </h5>
+                              <h5> App presentation on R-pub : <a href =http://rpubs.com/Redeemk17/356749 > http://rpubs.com/Redeemk17/356749</a></h5></center>
                               <h5> Data loading link: <a href = https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip> https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip</a></h5>
                               <br>
                   <left><h4><b>Project Objective sequence</b> </h4><hr>

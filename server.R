@@ -8,14 +8,15 @@ setwd("C:/Users/paralax11/Desktop/Data_Science_Capstone_Project/Project_Capstone
 source("model_algorithms.R", local = TRUE)
 
 # Designing shiny-server functions
+#-------------------------------------------------------------
 shinyServer(
   function(input, output, session)
-    {       # using 'reactive function' as input-word changes
+    { # using 'reactive function' as input-word changes
      Word.Prediction <- reactive({
-                            Predict.Next.Word(input$inputText)
-                  })
+                            Predict.Next.Word(input$InputText)
+                                })
      
-      # making reactive version of output(HTML) using ShinyUI library
+   # making reactive version of output(HTML) using ShinyUI library
     output$words <- renderUI({
                            Words.predictd <- Word.Prediction()
         
@@ -52,29 +53,29 @@ shinyServer(
     # selecting words from buttons instead of typing-in input-box
     # when first output is selected from button output > input box
     
-    observeEvent(input$word1, { updateTextInput(session, "inputText", value = paste(input$inputText,
+    observeEvent(input$word1, { updateTextInput(session, "InputText", value = paste(input$InputText,
                                                      get('AssignedWords', envir=globalenv())[1]))
                               })
     
     # when second output is selected into input box
-    observeEvent(input$word2, { updateTextInput(session, "inputText", value = paste(input$inputText,
+    observeEvent(input$word2, { updateTextInput(session, "InputText", value = paste(input$InputText,
                                                     get('AssignedWords', envir=globalenv())[2]))
                               })
-    #----------------------------
+    #-------------3/4---------------
     
     # when third output is selected
-    observeEvent(input$word3, { updateTextInput(session, "inputText", value = paste(input$inputText, 
+    observeEvent(input$word3, { updateTextInput(session, "InputText", value = paste(input$InputText, 
                                                     get('AssignedWords', envir=globalenv())[3]))
                               })
     
     
     # when fourth output is selected
-    observeEvent(input$word4, { updateTextInput(session, "inputText", value = paste(input$inputText, 
+    observeEvent(input$word4, { updateTextInput(session, "InputText", value = paste(input$InputText, 
                                                     get('AssignedWords', envir=globalenv())[4]))
                               })
-     #---------------------------
+     #-----------5----------------
     # when fifth output is selected
-    observeEvent(input$word5, { updateTextInput(session, "inputText", value = paste(input$inputText, 
+    observeEvent(input$word5, { updateTextInput(session, "InputText", value = paste(input$InputText, 
                                                     get('AssignedWords', envir=globalenv())[5]))
                               })
     
