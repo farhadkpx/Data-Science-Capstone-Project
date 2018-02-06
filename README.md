@@ -1,5 +1,4 @@
 
-
 ## **Summary overview of the Capstone Project**
 
 ### Project Instructions:
@@ -11,8 +10,7 @@ The goal of this project is to display that a student have gotten used to workin
   - Finally, sharing a 5-slide presentation using R-based Shiny.
 
 ### Two-link Submission:
-All the project relevant data, codes, .png  files should be hosted on 'github.com' as an open source and two link has to be provided.
-These links will offer these functionalities.
+All the project relevant data, codes, .png  files should be hosted on 'github.com'. These files has to be an open source and they should offer these following functionalities.
 1. The shiny user interface takes input with one or(multiple words) in a text box and outputs a set of prediction of the next word.
 2. 5-slides will display a summary overview and progression of the project.
 
