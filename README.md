@@ -42,18 +42,21 @@ Since, the whole next-word-prediction processes are based on N-gram sequential w
 
 These '.Rda' data frames will be called in by the algorithm for next word prediction progression.
 
-## Building the language model
+## Building the language model:
+**Markov chain model**
 In search of finding the right next-word-prediction model, I think Markov chain model in collaboration with Markov 
 random field is the perfect choice. Markov chain model property suggests that the distribution of a variable depends only on the distribution of previous state with random variables those changes through time.
 
 `We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
 In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties`
 
-## Katz's Back-off model
+**Katz's Back-off model**
 Following the Markov property, I think katz's Back-Off (KBO) Model is an apt choice algorithm for 'next-word-prediction' project. 
 By Wiki: Katz back-off is a generative n-gram language model that estimates the conditional probability of a word given its history in the n-gram. It accomplishes this estimation by backing-off to models with smaller histories under certain conditions. By doing so, the model with the most reliable information about a given history is used to provide the better results.
 
-In selecting next word prediction, katz's model offers most reliable fall-back plan. For instance, if Fivegram fails to find a next-word prediction then regress back to fourgram > threegram  or  bigram model.
+In selecting next word prediction, katz's model offers most reliable fall-back plan. For instance, if Fivegram fails to find a next-word prediction then regresses back to fourgram, threegram or bigram model.
+
+So we can see that Markov chain model offers the affinity between words, meaning how words should be connected based on N-gram model and Katz's model falls back on Markov chain as needed. I used both of them as an interdependent models.
                                   
 ### Limitation and Scope
 * The total combination file size is extremely big, needs lot of computational power.
