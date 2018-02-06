@@ -173,7 +173,7 @@ twitter_lines &lt;- length(twitter_data)
 
 #===========================================================
 # Creating smaller samples for further processing and create a corpus
-sample_percent &lt;- .05
+sample_percent &lt;- .07
 blogs_sample &lt;- blogs_data[sample(1:blogs_lines, blogs_lines * sample_percent)]
 news_sample &lt;- news_data[sample(1:news_lines, news_lines * sample_percent)]
 twitter_sample &lt;- twitter_data[sample(1:twitter_lines, twitter_lines * sample_percent)]
@@ -192,6 +192,7 @@ SampleCorpus &lt;- tm_map(SampleCorpus, removeNumbers)
 SampleCorpus &lt;- tm_map(SampleCorpus, removePunctuation)
 SampleCorpus &lt;- tm_map(SampleCorpus, stripWhitespace)
 
+# doing more pattern wise cleaning 
 ChangetoSpace &lt;- content_transformer(function(x, pattern) gsub(pattern, &quot; &quot;, x))
 SampleCorpus &lt;- tm_map(SampleCorpus, ChangetoSpace, &quot;(f|ht)tp(s?)://(.*)[.][a-z]+&quot;)
 SampleCorpus &lt;- tm_map(SampleCorpus, ChangetoSpace, &quot;@[^\\s]+&quot;)
@@ -209,12 +210,12 @@ saveRDS(sample_frequency, &quot;data/sample_frequency.Rda&quot;)
 sampleList &lt;- setDT(sample_frequency)
 head(sampleList)</code></pre>
 <pre><code>##    sample frequency
-## 1:   just     12787
-## 2:   like     11124
-## 3:   will     10779
-## 4:    one     10586
-## 5:    can      9490
-## 6:    get      9110</code></pre>
+## 1:   just     17813
+## 2:   like     15549
+## 3:   will     14861
+## 4:    one     14498
+## 5:    can     13424
+## 6:    get     13033</code></pre>
 <pre class="r"><code>##############################################################################################
 #=====================================NGRAMS==================================================
 # tokenizing  unigrams
@@ -245,8 +246,7 @@ generateNgramData &lt;- function(n) {
     if(n == 5) columns &lt;- c('one', 'two', 'three', 'four', 'five')
     
     if(n &gt; 1) {
-        final_Ngram &lt;- transform(final_Ngram, string = colsplit(string, split = &quot; &quot;, names = columns
-                                ))
+        final_Ngram &lt;- transform(final_Ngram, string = colsplit(string, split = &quot; &quot;, names = columns ))
     }
     
     rownames(final_Ngram) &lt;- NULL
@@ -257,48 +257,48 @@ generateNgramData &lt;- function(n) {
 unigram_frame &lt;- generateNgramData(1)
 head(unigram_frame)</code></pre>
 <pre><code>##   string frequency
-## 1    the    145730
-## 2    and     79176
-## 3    you     41767
-## 4    for     38498
-## 5   that     35958
-## 6   with     23937</code></pre>
+## 1    the    202876
+## 2    and    110067
+## 3    you     58449
+## 4    for     53967
+## 5   that     50235
+## 6   with     33101</code></pre>
 <pre class="r"><code>bigram_frame &lt;- generateNgramData(2)
 head(bigram_frame)</code></pre>
 <pre><code>##   string.one string.two frequency
-## 1         of        the     12847
-## 2         in        the     12234
-## 3         to        the      6796
-## 4        for        the      6717
-## 5         on        the      6491
-## 6         to         be      5802</code></pre>
+## 1         of        the     17822
+## 2         in        the     17018
+## 3        for        the      9599
+## 4         to        the      9569
+## 5         on        the      8977
+## 6         to         be      8258</code></pre>
 <pre class="r"><code>trigram_frame &lt;- generateNgramData(3)
 head(trigram_frame)</code></pre>
 <pre><code>##   string.one string.two string.three frequency
-## 1     thanks        for          the      1162
-## 2        one         of          the      1025
-## 3          a        lot           of      1013
-## 4      going         to           be       647
-## 5         to         be            a       642
-## 6          i       want           to       641</code></pre>
+## 1     thanks        for          the      1669
+## 2        one         of          the      1418
+## 3          a        lot           of      1365
+## 4      going         to           be       939
+## 5          i       want           to       902
+## 6         to         be            a       893</code></pre>
 <pre class="r"><code>fourgram_frame &lt;- generateNgramData(4)
 head(fourgram_frame)</code></pre>
 <pre><code>##   string.one string.two string.three string.four frequency
-## 1     thanks        for          the      follow       310
-## 2        the        end           of         the       260
-## 3        the       rest           of         the       234
-## 4         at        the          end          of       228
-## 5         is      going           to          be       203
-## 6        for        the        first        time       192</code></pre>
+## 1     thanks        for          the      follow       433
+## 2        the        end           of         the       343
+## 3        the       rest           of         the       333
+## 4         at        the          end          of       317
+## 5        for        the        first        time       266
+## 6         is      going           to          be       263</code></pre>
 <pre class="r"><code>fivegram_frame &lt;- generateNgramData(5)
 head(fivegram_frame)</code></pre>
 <pre><code>##   string.one string.two string.three string.four string.five frequency
-## 1         at        the          end          of         the       132
-## 2         in        the       middle          of         the        59
-## 3      thank        you           so        much         for        56
-## 4        the        end           of         the         day        53
-## 5        let         me         know          if         you        50
-## 6        for        the        first        time          in        44</code></pre>
+## 1         at        the          end          of         the       174
+## 2         in        the       middle          of         the        92
+## 3      thank        you           so        much         for        79
+## 4        for        the         rest          of         the        69
+## 5      happy    mothers          day          to         all        64
+## 6        for        the        first        time          in        63</code></pre>
 <pre class="r"><code># saving all the separated N-gram files to a folder 'Data'
 # creating N-grams test data set for algorithm validation
 saveRDS(unigram_frame, file = &quot;Data/unigram_test.Rda&quot;)
