@@ -67,7 +67,7 @@ So we can see that Markov chain model defines how the logical affinity between w
 * Prediction algorithm will not generate 5 output-choices for all input-text.
 * The tm-package cleaning processes avoids unusual signs or marks.
 
-## **`Links for shiny-app, Presentation and github sources`**
+## **`Shiny-app, Presentation and github code sources links`**
 
 Shiny app for next word perdiction is running at: (shiny)
 
