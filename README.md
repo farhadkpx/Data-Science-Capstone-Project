@@ -22,7 +22,7 @@ All the project relevant data, codes, .png  files should be hosted on 'github.co
 
 ## Data cleaning and 'Sample Corpus' creation
 One of the critical aspect of this project is data cleaning. I have used 'tm' R-package for this purpose. The data-cleaning processes
-requires an extensive work with these data sets. I feel due to the variety of input included in three file sets, my cleaning processes need more work to do. Here is a breif overview of my data cleaning work.
+,requires an extensive work with these data sets. I feel due to the variety of input included in three file sets, my cleaning processes need more work to do. Here is a breif overview of my data cleaning work.
 - converting all text to lowercase from both Corpus and input text.
 - removing all numbers from Corpus and input text.
 - removing all punctuations from both sets.
@@ -67,7 +67,7 @@ So we can see that Markov chain model defines how the logical affinity between w
 * Prediction algorithm will not generate 5 output-choices for all input-text.
 * The tm-package cleaning processes avoids unusual signs or marks.
 
-## **`Links for shiny-app and github sources`**
+## **`Links for shiny-app, Presentation and github sources`**
 
 Shiny app for next word perdiction is running at: (shiny)
 
