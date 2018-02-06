@@ -16,18 +16,19 @@ All the project relevant data, codes, .png  files should be hosted on 'github.co
 
 ### There are four main '.R' files that contributes to the project.
 * `1. ui.R` : Primary app user interface file.
-* `2. Server.R` : Server file listens user input and provide feedback.
-* `3. model_algotihm.R` : Next word prediction model.
-* `4. RdsFileCreation.R` : A copy of the milestone file.
+* `2. Server.R` : Server file listens user input and provides calculated feedback.
+* `3. model_algotihm.R` : Next word prediction model algorithm.
+* `4. RdsFileCreation.R` : A copy of the revised milestone file.
 
 ## Data cleaning and 'Sample Corpus' creation
-One of the critical aspect of this project is data cleaning. I have used 'tm' package for this purpose. The cleaning process
-does
+One of the critical aspect of this project is data cleaning. I have used 'tm' R-package for this purpose. The data-cleaning processes
+requires an extensive work with these data sets. I feel due to the variety of input included in three file sets, my cleaning processes need more work to do. Here is a breif overview of my data cleaning work.
 - converting all text to lowercase from both Corpus and input text.
 - removing all numbers from Corpus and input text.
-- removing all punctuations.
+- removing all punctuations from both sets.
 - removing bad words from Sample Corpus.
 - stripping unnecessary white spaces.
+- removing some unrelevant signs, marks from the Corpus.
 
 ## N-Gram design
 After having a clean dataset(Sample Corpus), I've gone through these steps to create N-grams
