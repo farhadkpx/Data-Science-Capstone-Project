@@ -49,20 +49,12 @@ random field is the perfect choice. Markov chain model property suggests that th
 `We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
 In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties`
 
-## Building the language model
-In search of finding the right next-word-prediction model, I think Markov chain model in collaboration with Markov 
-random field is the perfect choice. Markov chain model property suggests that the distribution of a variable depends only on the distribution of previous state with random variables those changes through time.
+## Katz's Back-off model
+Following the Markov property, I think katz's Back-Off (KBO) Model is an apt choice algorithm for 'next-word-prediction' project. 
+By Wiki: Katz back-off is a generative n-gram language model that estimates the conditional probability of a word given its history in the n-gram. It accomplishes this estimation by backing-off to models with smaller histories under certain conditions. By doing so, the model with the most reliable information about a given history is used to provide the better results.
 
-`We know that Markov random field is a generalization of Markov chain in multiple dimensions. In Markov random field future state of a variable depends on its neighboring variables (existing/previous) in multiple directions with which it is connected.
-In my pursuit to ascertain the connected and possible next word choice, I used N-Gram models(bigram, trigram, fourgram and fivegram).These N-grams word combinations are based on existing logical neighboring relations ,which projects Markov Chain model properties`
-
-**Sequential steps for finding the next-right predicted words**
-* Receiving input through the input text box. 
-* After initial processing for basic text cleaning with model algorithms,
-* We will go by sequential implementation of bigram, trigram models, 
-* If no matching found, we move to fourgram or fivegram model and display probable word choices.
-* Every computational process we will display five most frequently possible word choices.
-
+In selecting next word prediction, katz's model offers most reliable fall-back plan. For instance, if Fivegram fails to find a next-word prediction then regress back to fourgram > threegram  or  bigram model.
+                                  
 ### Limitation and Scope
 * The total combination file size is extremely big, needs lot of computational power.
 * The reduced file(10%) size may not be truly representative of the three files in combination.
