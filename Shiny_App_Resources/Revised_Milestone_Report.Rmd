@@ -1,5 +1,5 @@
 ---
-title: "DataAnalysis"
+title: "Data Analysis and N-gram Creation"
 author: "Ahmed Md"
 date: "January 30th, 2018"
 output: html_document
@@ -58,8 +58,10 @@ SampleCorpus <- tm_map(SampleCorpus, removeNumbers)
 SampleCorpus <- tm_map(SampleCorpus, removePunctuation)
 SampleCorpus <- tm_map(SampleCorpus, stripWhitespace)
 
-changetospace <- content_transformer(function(x, pattern) gsub(pattern, " ", x))
-SampleCorpus <- tm_map(SampleCorpus, changetospace, "/|@|\\|")
+# doing more pattern wise cleaning 
+ChangetoSpace <- content_transformer(function(x, pattern) gsub(pattern, " ", x))
+SampleCorpus <- tm_map(SampleCorpus, ChangetoSpace, "(f|ht)tp(s?)://(.*)[.][a-z]+")
+SampleCorpus <- tm_map(SampleCorpus, ChangetoSpace, "@[^\\s]+")
 
 # sample corpus analysis with most frequent words
 dtm <- DocumentTermMatrix(SampleCorpus, control = list(stopwords = TRUE))
@@ -84,9 +86,11 @@ ngramTokenizer <- function(l) {
 
 # generate unigram data set
 generateNgramData <- function(n) {
-    if(n == 1) {
+    if(n == 1) 
+    {
         Ngram_tdm <- TermDocumentMatrix(SampleCorpus)
-    } else {
+    } 
+    else {
         Ngram_tdm <- TermDocumentMatrix(SampleCorpus, control = list(tokenize = ngramTokenizer(n)))
     }
     
@@ -102,8 +106,7 @@ generateNgramData <- function(n) {
     if(n == 5) columns <- c('one', 'two', 'three', 'four', 'five')
     
     if(n > 1) {
-        final_Ngram <- transform(final_Ngram, string = colsplit(string, split = " ", names = columns
-                                ))
+        final_Ngram <- transform(final_Ngram, string = colsplit(string, split = " ", names = columns ))
     }
     
     rownames(final_Ngram) <- NULL
