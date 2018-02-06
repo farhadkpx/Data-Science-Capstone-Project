@@ -3,11 +3,12 @@
 ## **Summary overview of the Capstone Project**
 
 ### Project Instructions:
-The goal of this project is to display that a student have gotten used to working with the real-life data and on track to create prediction algorithm, which will provide an interface that can be accessed and used by others. Basic course instructions are:
-  - Demonstrate that you(student) have downloaded the data and have successfully loaded it in.
+The goal of this project is to display that a student have gotten used to working with the real-life data and on track to create prediction algorithm, which will provide an interface that can be accessed and used by others. The generalized course project instructions are:
+  - Demonstrating that student has downloaded the data and successfully loaded in their workspace.
   - Created a basic report of summary statistics about the data sets.
-  - Report any interesting findings that you amassed so far.
-  - Get feedback on your plans for creating a prediction algorithm and Shiny app.
+  - Reported any interesting findings that students has amassed so far.
+  - Provided a plan in developing a prediction algorithm with Shiny app.
+  - Finally, sharing a 5-slide presentation using R-based Shiny.
 
 ### On Project Submission
 Provide a user-interface and 5-slides that will display a summary overview of the project
