@@ -1,4 +1,4 @@
-
+s
 ## **Summary overview of the Capstone Project:**
 
 ### Project Instructions:
@@ -17,7 +17,7 @@ All the project relevant data, codes, .png  files should be hosted on 'github.co
 ### There are four main '.R' files that contributes to the project.
 * `1. ui.R` : Primary app user interface file.
 * `2. Server.R` : Server file listens user input and provides calculated feedback.
-* `3. model_algotihm.R` : Next word prediction model algorithm.
+* `3. model_algotihms.R` : Next word prediction model algorithm.
 * `4. RdsFileCreation.R` : A copy of the revised milestone file.
 
 ## Data cleaning and 'Sample Corpus' creation
