@@ -34,12 +34,12 @@ One of the critical aspect of this project is data cleaning. I have used 'tm' R-
 ## N-Gram design
 Since, the whole next-word-prediction processes are based on N-gram sequential word selection, N-gram creation holds the major connection point for finding next possible word choices. After having a clean dataset with(Sample Corpus), I've gone through these steps to create 5 N-grams.
 
-* `1. Applying TermDocumentMatrix function on Sampled clean corpus to create text-terms.`
-* `2. Converting the tokens in to a matrix.`
-* `3. Reordering token-terms (higher > lower) of the matrix by frequency.`
-* `4. Transforming the matrix into data frame with column names as strings and frequency.`
-* `5. Save them as unigram_test, bigram_test, trigram_test,`
-* `6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.`
+ `1. Applying TermDocumentMatrix function on Sampled clean corpus to create text-terms.`
+ `2. Converting the tokens in to a matrix.`
+ `3. Reordering token-terms (higher > lower) of the matrix by frequency.`
+ `4. Transforming the matrix into data frame with column names as strings and frequency.`
+ `5. Save them as unigram_test, bigram_test, trigram_test,`
+ `6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.`
 
 These '.Rda' data frames will be called in by the algorithm for next word prediction progression.
 
