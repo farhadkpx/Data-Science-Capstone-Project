@@ -2,14 +2,14 @@ Data Science Capstone Presentation
 ========================================================
 author: Md Ahmed
 font-family:'Risque'
-date: 6th February, 2018
+date: 12th February, 2018
 transition: zoom
 transition-speed: slow
 navigation: section
 autosize: true
 
 <font size="6" color="black"> 
-> This R-based presentation manifests next-word-prediction model with Shiny-application. The slidify visuals illustrate all the app relevant available resources, model algorithm steps and sequential functional processes with a data-flow-diagram.</font>
+> This R-based presentation manifests next-word-prediction model with Shiny-application. The slidified visuals illustrate all the app relevant available resources, model algorithm steps and sequential functional processes with a data-flow-diagram.</font>
 
 
 
@@ -22,10 +22,9 @@ font-family: 'Helvetica'
 - **The prime objective of this 'app-project' is to allow any user to input a text or word into the application box, then app-algorithm will preidct the next most-likely user input choices.**
 - A practical usable context for this app could be  text messaging or searching on mobile devices.
 
-Online sources to find Source-Code and presentation
-- [Milestone Report Revised version - ( Click here)](https://github.com/farhadkpx/Data-Science-Capstone-Project/blob/master/Shiny_App_Resources/Revised_Milestone_Report.Rmd)
-- Shiny App here:
-- Github here:
+Online sources to find Source-code and presentation
+- Shiny App here: https://farhad31.shinyapps.io/next_word_prediction_model/
+- Github here: https://github.com/farhadkpx/Data-Science-Capstone-Project
 </font>
 
 
@@ -34,6 +33,7 @@ Prediction Algorithm progression
 ========================================================
 type: prompt
 font-family: 'Risque'
+
 <font size="6" color="black">
 - Combining all three data files and reduce it to 10% of total size as a randomly selective sample Corpus.
 - Cleansing the Corpus with 'tm' package as such removing punctuation,numbers, whitspace and more to select text only tokens.
@@ -53,13 +53,16 @@ This diagram will display detail underlying linear steps of the 'app' progressio
 
 
 
-Learning and limitation
+Learning and Constraints
 ========================================================
 type: prompt
-The complexity of this project is rather challenging. I had to surf, critical analyze and read through available online-sources(github codes) to figure out a solution approach.
+<font size="6" color="black">
+The complexity of this project is rather challenging. I had to navigate through, critically analyze available online-sources(github codes) to figure out a solution.
 ![alt text](App_ScreenShot.png)
-**Limitations**
-- Sheer size of a fractional dataset requires huge computational resources.
-- My test-data set needs more validation approach to evaluate it's true representation  of the whole data set.
 
+<font size="6" color="black">
+- Sheer size of the combined dataset requires huge computational resources.
+- My test-data set needs more validation approach to evaluate it's true representation.
+- "missing value where TRUE/FALSE needed" ( needs code rewriting correction ).
+</font>
 
