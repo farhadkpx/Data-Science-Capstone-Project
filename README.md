@@ -1,4 +1,4 @@
-s
+
 ## **Summary overview of the Capstone Project:**
 
 ### Project Instructions:
