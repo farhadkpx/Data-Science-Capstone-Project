@@ -1,7 +1,7 @@
 
 library(tm)
 # data source path
-setwd("C:/Users/paralax11/Desktop/Data_Science_Capstone_Project/Project_Capstone/Word_Prediction_Project")
+#setwd("C:/Users/paralax11/Desktop/Data_Science_Capstone_Project/Project_Capstone/Word_Prediction_Project/Ui-Server")
 
   # Reading 'Rda' data-frame files from sources
 unigram <- readRDS(file = "Data/unigram_test.Rda")
