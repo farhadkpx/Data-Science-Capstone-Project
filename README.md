@@ -70,9 +70,9 @@ So we can see that Markov chain model defines how the logical affinity between w
 
 ## **`Shiny-app, Presentation and github code sources links`**
 
-1.Shiny app for next word perdiction is running at: https://farhad31.shinyapps.io/next_word_prediction_model/
+`1. Shiny app for next word perdiction is running at: https://farhad31.shinyapps.io/next_word_prediction_model/`
 
-2.Shiny presentation slides: http://rpubs.com/Redeemk17/359445
+`2. Shiny presentation slides: http://rpubs.com/Redeemk17/359445`
 
-3.Detail alogorithm resources is available at: https://github.com/farhadkpx/Data-Science-Capstone-Project
+`3. Detail alogorithm resources is available at: https://github.com/farhadkpx/Data-Science-Capstone-Project`
 
