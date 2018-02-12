@@ -21,6 +21,7 @@ All the project relevant data, codes, .png  files should be hosted on 'github.co
 * `4. RdsFileCreation.R` : A copy of the revised milestone file.
 
 ## Data cleaning and 'Sample Corpus' creation
+
 One of the critical aspect of this project is data cleaning. I have used 'tm' R-package for this purpose. The data-cleaning processes
 
 ,requires an extensive work with these data sets. I feel due to the variety of input included in three file sets, my cleaning processes need more work to do. Here is a breif overview of my data cleaning work.
@@ -70,6 +71,8 @@ So we can see that Markov chain model defines how the logical affinity between w
 ## **`Shiny-app, Presentation and github code sources links`**
 
 Shiny app for next word perdiction is running at: https://farhad31.shinyapps.io/next_word_prediction_model/
+
 Shiny presentation slides: http://rpubs.com/Redeemk17/359445
+
 Detail alogorithm resources is available at: https://github.com/farhadkpx/Data-Science-Capstone-Project
 
