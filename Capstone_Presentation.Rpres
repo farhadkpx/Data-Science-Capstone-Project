@@ -2,7 +2,7 @@ Data Science Capstone Presentation
 ========================================================
 author: Md Ahmed
 font-family:'Risque'
-date: 6th February, 2018
+date: 12th February, 2018
 transition: zoom
 transition-speed: slow
 navigation: section
@@ -23,7 +23,7 @@ font-family: 'Helvetica'
 - A practical usable context for this app could be  text messaging or searching on mobile devices.
 
 Online sources to find Source-code and presentation
-- Shiny App here:
+- Shiny App here: https://farhad31.shinyapps.io/next_word_prediction_model/
 - Github here: https://github.com/farhadkpx/Data-Science-Capstone-Project
 </font>
 
