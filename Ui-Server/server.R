@@ -3,7 +3,7 @@ library(shiny)
 library(shinythemes)
 #library(wordcloud)
 #data sourcing
-setwd("C:/Users/paralax11/Desktop/Data_Science_Capstone_Project/Project_Capstone/Word_Prediction_Project")
+#setwd("C:/Users/paralax11/Desktop/Data_Science_Capstone_Project/Project_Capstone/Word_Prediction_Project/Ui-Server")
 
 source("model_algorithms.R", local = TRUE)
 
