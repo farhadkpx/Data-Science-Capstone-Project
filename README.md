@@ -21,7 +21,6 @@ All the project relevant data, codes, .png  files should be hosted on 'github.co
 * `4. RdsFileCreation.R` : A copy of the revised milestone file.
 
 ## Data cleaning and 'Sample Corpus' creation
-
 One of the critical aspect of this project is data cleaning. I have used 'tm' R-package for this purpose. The data-cleaning processes
 ,requires an extensive work with these data sets. I feel due to the variety of input included in three file sets, my cleaning processes need more work to do. Here is a breif overview of my data cleaning work.
 - converting all text to lowercase from both Corpus and input text.
@@ -60,14 +59,14 @@ In selecting next word prediction, katz's model offers most reliable fall-back p
 
 So we can see that Markov chain model defines how the logical affinity between words should be maintained and N-gram models create those connection points available, while katz's model falls back on Markov chain model as needed. I used both model as interdependent models in finding my natural language processing(NLP) prediction.
                                   
-### Limitation and Scope
+### Limitation and Scope:
 * The total combination file size is extremely big, needs lot of computational power.
 * The reduced file(10%) size may not be truly representative of the three files in combination.
 * Scientific terms, unusual combination of input will not generate any prediction.
 * Prediction algorithm will not generate 5 output-choices for all input-text.
 * The tm-package cleaning processes avoids unusual signs or marks.
 
-## **`Shiny-app, Presentation and github code sources links`**
+## **`Shiny-app, Presentation and github code source links`**
 
 1. Shiny app for next word perdiction is running at: https://farhad31.shinyapps.io/next_word_prediction_model/
 
