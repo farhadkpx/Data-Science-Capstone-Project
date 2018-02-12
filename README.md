@@ -23,7 +23,6 @@ All the project relevant data, codes, .png  files should be hosted on 'github.co
 ## Data cleaning and 'Sample Corpus' creation
 
 One of the critical aspect of this project is data cleaning. I have used 'tm' R-package for this purpose. The data-cleaning processes
-
 ,requires an extensive work with these data sets. I feel due to the variety of input included in three file sets, my cleaning processes need more work to do. Here is a breif overview of my data cleaning work.
 - converting all text to lowercase from both Corpus and input text.
 - removing all numbers from Corpus and input text- removing all punctuations from both sets.
@@ -34,12 +33,12 @@ One of the critical aspect of this project is data cleaning. I have used 'tm' R-
 ## N-Gram design
 Since, the whole next-word-prediction processes are based on N-gram sequential word selection, N-gram creation holds the major connection point for finding next possible word choices. After having a clean dataset with(Sample Corpus), I've gone through these steps to create 5 N-grams.
 
- `1. Applying TermDocumentMatrix function on Sampled clean corpus to create text-terms.`
- `2. Converting the tokens in to a matrix.`
- `3. Reordering token-terms (higher > lower) of the matrix by frequency.`
- `4. Transforming the matrix into data frame with column names as strings and frequency.`
- `5. Save them as unigram_test, bigram_test, trigram_test,`
- `6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.`
+ 1. Applying TermDocumentMatrix function on Sampled clean corpus to create text-terms.
+ 2. Converting the tokens in to a matrix.
+ 3. Reordering token-terms (higher > lower) of the matrix by frequency.
+ 4. Transforming the matrix into data frame with column names as strings and frequency.
+ 5. Save them as unigram_test, bigram_test, trigram_test,
+ 6. fourgram_test and fivegram_test as N-garam data frame with 'Rda' file format.
 
 These '.Rda' data frames will be called in by the algorithm for next word prediction progression.
 
@@ -70,9 +69,9 @@ So we can see that Markov chain model defines how the logical affinity between w
 
 ## **`Shiny-app, Presentation and github code sources links`**
 
-`1. Shiny app for next word perdiction is running at: https://farhad31.shinyapps.io/next_word_prediction_model/`
+1. Shiny app for next word perdiction is running at: https://farhad31.shinyapps.io/next_word_prediction_model/
 
-`2. Shiny presentation slides: http://rpubs.com/Redeemk17/359445`
+2. Shiny presentation slides: http://rpubs.com/Redeemk17/359445
 
-`3. Detail alogorithm resources is available at: https://github.com/farhadkpx/Data-Science-Capstone-Project`
+3. Detail alogorithm resources is available at: https://github.com/farhadkpx/Data-Science-Capstone-Project
 
